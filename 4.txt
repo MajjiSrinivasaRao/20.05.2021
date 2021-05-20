@@ -1,0 +1,56 @@
+// program to check Valid Parentheses or not
+
+
+#include <iostream>
+#include<bits/stdc++.h>
+using namespace std;
+
+
+int main()
+{
+
+	string s;// reading a string of brackets
+	cin>>s;
+	stack<char>sta;	
+
+	int flag=0;// for cross checking
+	
+	for(auto i:s)
+	{
+		if(i=='['||i=='{'||i=='(')
+		{
+			sta.push(i);
+		}
+		else
+		{
+			if(i==']' && !sta.empty() && sta.top()=='[')
+			{
+				sta.pop();
+			}
+			else if(i=='}' && !sta.empty() && sta.top()=='{')
+			{
+				sta.pop();
+			}
+			else if( i==')' && !sta.empty() && sta.top()=='(')
+			{
+				sta.pop();
+			}
+			else
+			{
+				flag=1;
+				break;
+			}		
+		}
+	
+	}
+
+	
+	if(flag==0)
+		cout<<" true "<<"\n";
+	else
+		cout<<" false "<<"\n";
+
+
+	
+return 0;
+}
